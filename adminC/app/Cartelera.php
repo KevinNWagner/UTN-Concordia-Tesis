@@ -25,17 +25,3 @@ class Cartelera extends Model
     ]; 
 }
 
-/*
--- -----------------------------------------------------
--- Table `db_Administracion_Colectivos`.`Carteleras`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db_Administracion_Colectivos`.`Carteleras` (
-  `idCarteleras` INT NOT NULL AUTO_INCREMENT,
-  `horaInicio` DATETIME NOT NULL,
-  `horaFin` DATETIME NOT NULL,
-  `cantidadPersonas` INT NOT NULL,
-  `duracionRecorrido` TIME NOT NULL,
-  PRIMARY KEY (`idCarteleras`))
-ENGINE = InnoDB;
-
-*/
