@@ -23,5 +23,6 @@ class Cartelera extends Model
     protected $guarded = [
 
     ]; 
+    //tesitn
 }
 
