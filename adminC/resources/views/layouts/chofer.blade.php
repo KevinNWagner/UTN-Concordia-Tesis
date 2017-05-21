@@ -90,39 +90,12 @@
                 <i class="fa fa-home"></i> <span>Mi Dia</span>             
               </a>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-clock-o"></i>
-                <span>Rendiciones</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="cartelera"><i class="fa fa-circle-o"></i> Carteleras</a></li>
-                <li><a href="cronograma"><i class="fa fa-circle-o"></i> Cronogramas</a></li>
-              </ul>
-            </li>
             
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-users"></i>
-                <span>Empleados</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="empleado"><i class="fa fa-circle-o"></i> Adminitracion</a></li>
-                <li><a href="empleado"><i class="fa fa-circle-o"></i> Choferes</a></li>
-                <li><a href="empleado"><i class="fa fa-circle-o"></i> Inspectores</a></li>
-                <li><a href="empleado"><i class="fa fa-circle-o"></i> Todos</a></li>
-              </ul>
-            </li>
+            
+           
+              
             <li>
-              <a href="colectivo">
-                <i class="fa fa-bus"></i> <span>Colectivos</span>
-  
-              </a>
-            </li>
-            <li>
-              <a href="rendicion">
+              <a href="/chofer/rendicion">
                 <i class="fa fa-money"></i> <span>Rendiciones</span>
   
               </a>

@@ -8,10 +8,10 @@
 				aria-label="Close">
                      <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Eliminar cartelera</h4>
+                <h4 class="modal-title">Eliminar cronograma</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirme si desea Eliminar la cartelera</p>
+				<p>Confirme si desea Eliminar el cronograma.</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

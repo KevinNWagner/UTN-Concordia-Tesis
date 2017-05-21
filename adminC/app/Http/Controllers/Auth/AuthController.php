@@ -82,8 +82,12 @@ class AuthController extends Controller
                 break;        
         }
 
-        return redirect('my-account'.$user->Tipos_idTipos);
+        return redirect('auth/login');
     }
+
+    
+
+    
 
     /**
      * Create a new user instance after a valid registration.

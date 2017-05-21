@@ -26,15 +26,15 @@ class RendicionChoferFormRequest extends Request
         return [           
             'recaudacion'=> 'required|regex:/^\d*(\.\d{1,2})?$/',
             'fecha'=> 'DATE|required',
-            'observacionAdmin' =>'VARCHAR|max:200',
-            'boletoPrimera' => 'required|integer|max:11',
-            'beletoSegunda'=> 'required|integer|max:11',
-            'boletoEscolar' => 'required|integer|max:11',
-            'boletoSecundario'=> 'required|integer|max:11',
-            'boletoJubilado' => 'required|integer|max:11',
-            'boleteoCombinado' => 'required|integer|max:11',
-            'Empleados_idEmpleados' => 'required|integer|max:11',
-            'Colectivos_idColectivos'=> 'required|integer|max:11',
+            'observacionAdmin' =>'VARCHAR|digits_between:0,200',
+            'boletoPrimera' => 'required|integer|digits_between:0,11',
+            'beletoSegunda'=> 'required|integer|digits_between:0,11',
+            'boletoEscolar' => 'required|integer|digits_between:0,11',
+            'boletoSecundario'=> 'required|integer|digits_between:0,11',
+            'boletoJubilado' => 'required|integer|digits_between:0,11',
+            'boleteoCombinado' => 'required|integer|digits_between:0,11',
+            'Empleados_idEmpleados' => 'required|integer|digits_between:0,11',
+            'Colectivos_idColectivos'=> 'required|integer|digits_between:0,11',
         ];
     }
 }

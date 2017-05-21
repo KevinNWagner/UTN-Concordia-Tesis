@@ -17,7 +17,7 @@ class MidUserInspect
     {
         $usuario_actual=\Auth::user();
         if($usuario_actual->Tipos_idTipos!=3){
-            return view("index");
+            return redirect('/home');
         }
         
         return $next($request);

@@ -17,7 +17,7 @@ class MidUserSuperAdmin
     {
         $usuario_actual=\Auth::user();
         if($usuario_actual->Tipos_idTipos!=100){
-           return response('Unauthorized.', 401);
+          return redirect('/home');
         }
       
         return $next($request);

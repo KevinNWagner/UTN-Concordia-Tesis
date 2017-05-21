@@ -17,7 +17,7 @@ class MidUserAdmin
     {
         $usuario_actual=\Auth::user();
         if($usuario_actual->Tipos_idTipos!=1){
-           return response('Unauthorized.', 401);
+           return redirect('/');
         }
         return $next($request);
     }

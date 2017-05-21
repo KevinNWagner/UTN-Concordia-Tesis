@@ -2,7 +2,11 @@
 @section ('contenido')
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-sx-12">
-            <h3>Nueva Cartelera</h3>
+        @if($designacion)
+            <h3>Nueva Rendicion</h3>
+        @else
+          <h3>Hoy, no estuvo en ningún cronograma.</h3>
+        @endif    
             @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
@@ -14,6 +18,7 @@
             </div>
             @endif
             
+            @if($designacion)
             {!!Form::open(array('url'=>'chofer/rendicion','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
              <div class="form-group">
@@ -75,6 +80,8 @@
             {!!Form::close()!!}
             
         </div>
+        @endif
+
     </div>
 
 @endsection

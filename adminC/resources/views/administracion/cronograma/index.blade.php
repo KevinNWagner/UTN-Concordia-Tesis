@@ -22,7 +22,7 @@
                     <td></td>               
                     <td>{{$tip->cartelera}}</td>     
                     <td>
-                        <a href="{{URL::action('CronogramaController@edit',$tip->idCronogramas)}}"><button class="btn btn-info">Editar</button></a>
+                        
                         
                          <a href="" data-target="#modal-delete-{{$tip->idCronogramas}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
                         
