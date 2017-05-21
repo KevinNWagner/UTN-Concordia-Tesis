@@ -53,9 +53,9 @@
                 </select>
             </div>
             
-            <div class="form-group">
+            <div style="padding-left:5em" class="form-group">
                 <label for="chofer1">Chofer 1er Turno</label>               
-                <select name="chofer1[]" id="chofer1[]" class="form-control" >
+                <select  name="chofer1[]" id="chofer1[]" class="form-control" >
                 @if(count($choferesT1)<$count)
                  <option disabled selected value> No hay suficientes choferes del 1er turno </option>
                  @php($NoContinuar = true)
@@ -73,7 +73,7 @@
                  
                 </select>
             </div>
-            <div class="form-group">
+            <div style="padding-left:5em" class="form-group">
                 <label for="cartelera">Chofer 2er Turno</label>               
                 <select name="chofer2[]" id="chofer2[]" class="form-control"> 
                 @if(count($choferesT2)<$count)

@@ -29,18 +29,14 @@ class HoyController extends Controller
      */
     public function index()
     {
-        $usuario = DB::table('users')       
-        ->join('empleados','empleados.name','=','users.name') 
-        ->select('users.*','empleados.idEmpleados as idEmpleado','empleados.turno as turno')
-        ->where('users.name','=',\Auth::user()->name)
-        ->first();
+        
 
 // ->join('carteleras','carteleras.idCarteleras','=','cronogramas.Carteleras_idCarteleras')
         $designacion=DB::table('designaciones')
         ->join('cronogramas','Cronogramas.idCronogramas','=','Cronogramas_idCronogramas')
         ->join('carteleras','carteleras.idCarteleras','=','cronogramas.Carteleras_idCarteleras')           
         ->where('cronogramas.fecha','=',date('Y-m-d'))       
-        ->select('designaciones.*','carteleras.horaInicio as horaInicio','carteleras.horaFin as horaFin','carteleras.cantidadPersonas as cant','carteleras.duracionRecorrido as duracionRecorrido')->first();
+        ->select('designaciones.*','designaciones.Empleados_idEmpleados as idEmpleado','carteleras.horaInicio as horaInicio','carteleras.horaFin as horaFin','carteleras.cantidadPersonas as cant','carteleras.duracionRecorrido as duracionRecorrido')->first();
 
 // Parametro de cronograma.create 
     // @for($count=1;$count<$cartelera->cantidadPersonas/800;$count++)
@@ -56,10 +52,12 @@ class HoyController extends Controller
 
             $horarios=[];
             $numeroColectivo=1;
+            $turno = 1;
             
             for($c=0;$c<$colectivos;$c++){
                 $HI=Carbon::createFromFormat('H:i:s',$horaInicio->toTimeString());
                 $horarios[]=[
+                    'turno'=>$turno,
                     'orden'=>$numeroColectivo,
                     'inicio'=>$horaInicio->toTimeString(),
                     'fin'=> $HI->addSeconds($duracionRecorrido)->toTimeString(),               
@@ -67,13 +65,15 @@ class HoyController extends Controller
                 $horaInicio=$horaInicio->addSeconds($intervaloColectivos);        
                 $numeroColectivo++;
                     if($numeroColectivo == ($cantColectivos)+1){
-                    $numeroColectivo=1;
-                    }                    
+                        $numeroColectivo=1;
+                    }        
+                    if($c == ($colectivos/2)){
+                        $turno=2;
+                    }            
             }
 
             
-            if($usuario->turno==1){$inicio=0;}
-            else{$inicio=(count($horarios))/2;}
+            
 
             $miHorario=[];
             $cc=0;
@@ -82,7 +82,7 @@ class HoyController extends Controller
             foreach($horarios as $hh){
                 $miHorario[]=[
                         'inicio'=>$hh['inicio'],
-                        'empleado'=>$this->getNombre($hh['orden'],date('Y-m-d')),
+                        'empleado'=>$this->getNombre($hh['orden'],date('Y-m-d'),$hh['turno']),
                         'colectivo'=>$this->getColectivo($hh['orden'],date('Y-m-d')),
                         'fin'=>$hh['fin'],       
                     ];
@@ -100,13 +100,24 @@ class HoyController extends Controller
 
     }
 
-    function getNombre($orden,$date){
+    function getNombre($orden,$date,$turno){             
+
             $designacion=DB::table('designaciones')
             ->join('cronogramas','Cronogramas.idCronogramas','=','Cronogramas_idCronogramas')
             ->join('empleados','empleados.idEmpleados','=','designaciones.Empleados_idEmpleados')                             
-            ->where('cronogramas.fecha','=',$date)
             ->where('designaciones.orden','=',$orden)
+            ->where('cronogramas.fecha','=',$date)
             ->select('empleados.nombre as nombre','empleados.apellido as apellido')->first();
+        
+            if($turno==2){
+                $designacion=DB::table('designaciones')
+                ->join('cronogramas','Cronogramas.idCronogramas','=','Cronogramas_idCronogramas')
+                ->join('empleados','empleados.idEmpleados','=','designaciones.Empleados_idEmpleados')                             
+                ->where('designaciones.orden','=',$orden)
+                ->where('cronogramas.fecha','=',$date)
+                ->orderBy('designaciones.idDesignaciones', 'desc')
+                ->select('empleados.nombre as nombre','empleados.apellido as apellido')->first();                
+            }
 
             return ($designacion->nombre.' '.$designacion->apellido);
 
