@@ -51,6 +51,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'userAdmin'=> \sisAdmin\Http\Middleware\MidUserAdmin::class,
         'userChofer'=> \sisAdmin\Http\Middleware\MidUserChofer::class,
-        'userInspect'=> \sisAdmin\Http\Middleware\MidUserInspect::class,
+        'userInspector'=> \sisAdmin\Http\Middleware\MidUserInspect::class,
     ];
 }

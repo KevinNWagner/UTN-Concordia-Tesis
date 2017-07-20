@@ -41,6 +41,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('chofer/rendicion','rendicionChoferController');
 
         });
+Route::group(['middleware' => 'userInspector'], function () {
+        Route::resource('inspector/midia','MiDiaController');
+        Route::resource('inspector/home','InspectorMenuController');
+        Route::resource('inspector/rendicion','rendicionChoferController');
+
+        });
+
 
 Route::get('/home', 'Redirect@tipo');    
 });
