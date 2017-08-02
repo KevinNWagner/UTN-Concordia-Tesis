@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+// ultimo
 
 Route::get('/', function () {
     return view('auth/login');
@@ -42,9 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         });
 Route::group(['middleware' => 'userInspector'], function () {
-        Route::resource('inspector/midia','MiDiaController');
+        
         Route::resource('inspector/home','InspectorMenuController');
-        Route::resource('inspector/rendicion','rendicionChoferController');
+        Route::resource('inspector/reportes','ReporteController');
 
         });
 

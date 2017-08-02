@@ -13,7 +13,7 @@ class ReporteFormRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class ReporteFormRequest extends Request
     public function rules()
     {
         return [
-            //
+            'desc'=>'required',
+            //'fecha'=>'required',
+            'colectivo' =>'required',
+            'chofer'=>'required',
+            
         ];
     }
 }

@@ -56,7 +56,7 @@
                   <li class="user-header">
                     
                     <p>
-                        <h3 ><font color="white">Chofer</Font><h3>
+                        <h3 ><font color="white">Inspector</Font><h3>
                       <small></small>
                     </p>
                   </li>
@@ -86,8 +86,8 @@
           <ul class="sidebar-menu">
           <li class="header"></li>
             <li>
-              <a href="/chofer/midia">
-                <i class="fa fa-home"></i> <span>Mi Dia</span>             
+              <a href="/inspector/home">
+                <i class="fa fa-home"></i> <span>Home</span>             
               </a>
             </li>
             
@@ -95,8 +95,8 @@
            
               
             <li>
-              <a href="/chofer/rendicion">
-                <i class="fa fa-money"></i> <span>Rendiciones</span>
+              <a href="/inspector/reportes">
+                <i class="fa fa-money"></i> <span>Repotes</span>
   
               </a>
             </li>

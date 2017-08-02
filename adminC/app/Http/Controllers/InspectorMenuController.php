@@ -25,7 +25,7 @@ class InspectorMenuController extends Controller
      */
     public function index()
     {
-       return view('chofer.home.index');
+       return view('inspector.home.index');
     }
     
 }
