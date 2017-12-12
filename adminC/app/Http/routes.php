@@ -29,10 +29,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('administracion/hoy','HoyController');
         Route::get('administracion/home','AdminMenuController@index');
         Route::resource('administracion/colectivo','ColectivoController');
+        Route::get('administracion/colectivo','ColectivoController@index');
         Route::resource('administracion/empleado','EmpleadoController');
+        Route::resource('administracion/empleado/select','EmpleadoController@select');
+        
         Route::resource('administracion/cronograma','CronogramaController');
+        Route::get('administracion/cronograma','CronogramaController@index');
         Route::resource('administracion/cartelera','CarteleraController');
         Route::resource('administracion/rendicion','RendicionAdministracionController');
+        Route::resource('administracion/reportes','AdminReporteController');
+        Route::get('administracion/reportes','AdminReporteController@index');
         Route::post('administracion/cronograma/{idCartelera}/{fecha}/storeDesignacion','CronogramaController@storeDesignacion');
     });
 

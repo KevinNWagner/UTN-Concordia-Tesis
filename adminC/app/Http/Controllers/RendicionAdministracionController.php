@@ -30,4 +30,21 @@ class RendicionAdministracionController extends Controller
             return view('administracion.rendicion.index',["rendiciones"=>$rendiciones,"searchText"=>$query]);
         }
     }
+    public function show($id){
+        $rendicion=DB::table('rendiciones_boleteras')
+        ->join('designaciones','designaciones.Empleados_idEmpleados','=','rendiciones_boleteras.Empleados_idEmpleados')       
+        ->join('cronogramas','cronogramas.idCronogramas','=','designaciones.Cronogramas_idCronogramas')
+        ->join('colectivos','colectivos.idColectivos','=','designaciones.Colectivos_idColectivos')               
+        ->join('empleados','designaciones.Empleados_idEmpleados','=','empleados.idEmpleados')               
+        ->where('rendiciones_boleteras.idRendicionesBoleteras','=',$id)
+        ->select('empleados.nombre as nombre','colectivos.matricula as mat',
+        'rendiciones_boleteras.fecha as fecha','empleados.apellido as apellido')
+        ->first();
+        $boletera=DB::table('rendiciones_boleteras')                    
+        ->where('rendiciones_boleteras.idRendicionesBoleteras','=',$id)       
+        ->first();
+       // return vier('hello1');
+        return view('administracion.rendicion.show',["rendicion"=>$rendicion,"boletera"=>$boletera]);
+    }
+
 }

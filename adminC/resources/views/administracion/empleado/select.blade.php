@@ -1,9 +1,17 @@
 @extends ('layouts.admin')
 @section ('contenido')
+{{--*/ $tipoS = $tipoB; /*--}}
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Listado de empleados <a href="empleado/create"><button class="btn btn-success">Nuevo</button></a></h3>
-            @include('administracion.empleado.search')            
+            {!! Form::open(array('url'=>'administracion/empleado/'.$tipoS,'method'=>'GET','autocomplete'=>'off','role'=>'search')) !!}
+            <div class = "form-grpup">
+                <div class="input-group">
+                    <input type="text"  class="form-control" name="searchText" placeholder="Buscar..." value="{{$searchText}}">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </span>
+            {{Form::close()}}       
         </div>
     </div>
     <div class="row">
@@ -21,7 +29,9 @@
                     <th>Tipo</th>               
                     <th>Opciones</th>
                 </thead>
+                {{--*/ $tipoS = 'test' /*--}}
                 @foreach($empleados as $tip)
+                {{--*/ $tipoS = $tip->tipo /*--}}
                 <tr>
                                    
                     <td>{{$tip->nombre}}</td>

@@ -22,6 +22,7 @@ class ColectivoController extends Controller
             $query=trim($request->get('searchText'));
             $colectivos=DB::table('colectivos')
             ->orderBy('idColectivos','desc')
+            ->where('matricula','LIKE','%'.$query.'%') 
             ->paginate(7);
             return view('administracion.colectivo.index',["colectivos"=>$colectivos,"searchText"=>$query]);
         }

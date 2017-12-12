@@ -21,7 +21,9 @@ class CarteleraController extends Controller
             $query=trim($request->get('searchText'));
             $carteleras=DB::table('carteleras')
             ->orderBy('idCarteleras','desc')
+            ->where('descripcion','LIKE','%'.$query.'%') 
             ->paginate(7);
+            
             return view('administracion.cartelera.index',["carteleras"=>$carteleras,"searchText"=>$query]);
         }
     }

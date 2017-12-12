@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Listado de rendiciones </h3>
-
+            @include('administracion.rendicion.search')   
         </div>
     </div>
     <div class="row">
@@ -24,7 +24,7 @@
                     <td>{{$tip->Nombre}} {{$tip->Apellido}}</td>                  
                     
                     <td>
-                        
+                    <a href="{{URL::action('RendicionAdministracionController@show',$tip->idRendicionesBoleteras)}}"><button class="btn btn-default">Ver</button></a>
                     </td>
                 </tr>
                  

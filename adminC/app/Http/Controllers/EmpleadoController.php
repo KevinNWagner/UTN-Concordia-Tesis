@@ -79,9 +79,30 @@ class EmpleadoController extends Controller
         return Redirect::to('administracion/empleado');
 
     }
-    public function show($id){
+    public function show($id,Request $request){
+        
+        if(is_numeric($id)){
         $tipos=DB::table('tipos')->get();
         return view('administracion.empleado.show',["tipos"=>$tipos,"empleado"=>Empleado::findOrFail($id)]);
+        }else{
+            if($id){
+                if($request){
+                    $query=trim($request->get('searchText'));   
+                    $tipo = $id;
+        
+                    $empleados = DB::table('empleados')
+                    ->join('users', 'users.name', '=', 'empleados.name')            
+                    ->join('tipos', 'tipos.idTipos', '=', 'users.Tipos_idTipos')            
+                    ->select('empleados.*', 'tipos.nombre as tipo','tipos.idTipos as idT')
+                    ->where('tipos.nombre','LIKE','%'.$tipo.'%')
+                    ->where('users.name','LIKE','%'.$query.'%')
+                    ->orderBy('empleados.idEmpleados','desc')
+                    ->paginate(7);
+                    
+                    return view('administracion.empleado.select',["empleados"=>$empleados,"tipoB"=>$tipo,"searchText"=>$query]);
+                }
+            }
+        }
     }
     public function edit($id){
         $tipos = DB::table('tipos')->get();
@@ -124,5 +145,27 @@ class EmpleadoController extends Controller
         
         $empleado->delete();
         return Redirect::to('administracion/empleado');
+    }
+    public function select(){
+        if($request){
+            $query=trim($request->get('searchText'));   
+
+            $empleados = DB::table('empleados')
+            ->join('users', 'users.name', '=', 'empleados.name')            
+            ->join('tipos', 'tipos.idTipos', '=', 'users.Tipos_idTipos')            
+            ->select('empleados.*', 'tipos.nombre as tipo','tipos.idTipos as idT')
+            ->where('idT','=',$tipo)
+
+           // $empleados=DB::table('empleados')->join('tipos','tipos.idTipos','=','empleados.Tipos_idTipos')->where('empleados.nombre','LIKE','%'.$query.'%')
+            //DB::table('empleados')->where('nombre','LIKE','%'.$query.'%')
+            
+            
+            
+            ->orderBy('empleados.idEmpleados','desc')
+            ->paginate(7);
+            
+          //  return view('administracion.empleado.select',["empleados"=>$empleados,"searchText"=>$query]);
+            return view('hello');
+        }
     }
 }

@@ -26,7 +26,9 @@ class CronogramaController extends Controller
             ->join('carteleras','carteleras.idCarteleras','=','cronogramas.Carteleras_idCarteleras')
             ->select('cronogramas.*','carteleras.descripcion as cartelera')
             ->orderBy('fecha','desc')
+            ->where('carteleras.descripcion','LIKE','%'.$query.'%')    
             ->paginate(7);
+            
             return view('administracion.cronograma.index',["cronogramas"=>$cronogramas,"searchText"=>$query]);
         }
     }

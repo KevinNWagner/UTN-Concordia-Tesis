@@ -10,26 +10,23 @@
             <div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
-                    <th>ID</th>
+                    
                     <th>Desc.</th>
                     <th>Fecha</th>
                     <th>Colectivo</th>
                     <th>Chofer</th>
-                    <th>Opciones</th>
+                   
                 </thead>
                 @foreach($reportes as $tip)
                 <tr>
-                    <td>{{$tip->idReportesInspectores}}</td>
+                    
                     <td>{{$tip->descripcion}}</td>
-                    <td>{{$tip->fecha}}</td>
-                    <td>{{$tip->Colectivos_idColectivos}}</td>
-                    <td>{{$tip->Empleados_idEmpleadosChofer}}</td>
+                    
+                    <td> {{ DateTime::createFromFormat('Y-m-d', $tip->fecha)->format('d-m-Y')}}</td>
+                    <td>{{$tip->matricula}}</td>
+                    <td>{{$tip->nombre}}&nbsp{{$tip->apellido}} </td>
          
-                    <td>
-                        
-                        
-                       
-                    </td>
+                   
                 </tr>
                
                 @endforeach
