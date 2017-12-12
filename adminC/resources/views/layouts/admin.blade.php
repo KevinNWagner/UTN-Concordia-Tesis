@@ -109,7 +109,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/administracion/empleado/Administrativo"><i class="fa fa-circle-o"></i> Adminitracion</a></li>
+                <li><a href="/administracion/empleado/Administrativo"><i class="fa fa-circle-o"></i> administración</a></li>
                 <li><a href="/administracion/empleado/Chofer"><i class="fa fa-circle-o"></i> Choferes</a></li>
                 <li><a href="/administracion/empleado/Inspector"><i class="fa fa-circle-o"></i> Inspectores</a></li>
                 <li><a href="/administracion/empleado"><i class="fa fa-circle-o"></i> Todos</a></li>

@@ -3,7 +3,7 @@
 {{--*/ $tipoS = $tipoB; /*--}}
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Listado de empleados <a href="empleado/create"><button class="btn btn-success">Nuevo</button></a></h3>
+            <h3>Listado de empleados <a href="\administracion/empleado/create"><button class="btn btn-success">Nuevo</button></a></h3>
             {!! Form::open(array('url'=>'administracion/empleado/'.$tipoS,'method'=>'GET','autocomplete'=>'off','role'=>'search')) !!}
             <div class = "form-grpup">
                 <div class="input-group">
